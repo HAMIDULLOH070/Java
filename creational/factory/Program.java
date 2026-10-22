@@ -2,21 +2,20 @@ package creational.factory;
 
 public class Program {
     public static void main(String[] args) {
-        DeveloperFactory cppDeveloperFactory = getDeveloperFactory("Python");
+        DeveloperFactory cppDeveloperFactory = getDeveloperFactory("C++");
         Developer developer = cppDeveloperFactory.createDeveloper();
         developer.writeCode();
-        DeveloperFactory pythonDeveloperFactory = getDeveloperFactory("C++");
+        DeveloperFactory pythonDeveloperFactory = getDeveloperFactory("Python");
         Developer developer2 = pythonDeveloperFactory.createDeveloper();
         developer2.writeCode();
     }
 
     private static DeveloperFactory getDeveloperFactory(String language) {
-        if (language.equals("C++")) {
+        if ("C++".equalsIgnoreCase(language)) {
             return new CppDeveloperFactory();
-        } else if (language.equals("Python")) {
+        } else if ("Python".equalsIgnoreCase(language)) {
             return new PythonDeveloperFactory();
-        } else
-            throw new RuntimeException();
+        }
+        throw new IllegalArgumentException("Noma'lum dasturlash tili: " + language);
     }
-
 }

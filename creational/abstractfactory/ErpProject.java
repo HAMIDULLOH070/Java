@@ -1,11 +1,11 @@
 package creational.abstractfactory;
 
 
-import creational.abstractfactory.learning.LearningTeamFactory;
+import creational.abstractfactory.erp.ErpTeamFactory;
 
 public class ErpProject {
     public static void main(String[] args) {
-        ProjectTeamFactory teamFactory = new LearningTeamFactory();
+        ProjectTeamFactory teamFactory = new ErpTeamFactory();
         Developer developer = teamFactory.getDeveloper();
         Tester tester = teamFactory.getTester();
         ProjectManager projectManager = teamFactory.getProjectManager();

@@ -1,26 +1,25 @@
 package creational.singleton;
 
 public class ProgrammLogger {
-    private static ProgrammLogger programmLogger;
-    private static String logFile = "This is log file. \n";
+    private String logFile = "This is log file. \n";
 
-    public static synchronized ProgrammLogger getProgrammLogger() {
-        if (programmLogger == null) {
-            programmLogger = new ProgrammLogger();
-        }
-        return programmLogger;
+    // Tashqi sinfdan obyekt yaratib bo'lmasligi uchun private konstruktor
+    private ProgrammLogger() {}
+
+    // Bill Pugh Singleton usuli (Static Inner Class Holder)
+    private static class Holder {
+        private static final ProgrammLogger INSTANCE = new ProgrammLogger();
     }
 
-    private ProgrammLogger() {
+    public static ProgrammLogger getProgrammLogger() {
+        return Holder.INSTANCE;
     }
 
-    public void addLogInfo(String info) {
-        logFile += info + "\n";
+    public void addLogInfo(String logInfo) {
+        logFile += logInfo + "\n";
     }
 
-    public void showLogInfo() {
+    public void showLogFile() {
         System.out.println(logFile);
     }
-
 }
-

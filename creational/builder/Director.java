@@ -1,19 +1,34 @@
 package creational.builder;
 
 public class Director {
-    WebsiteBuilder builder;
+    private WebsiteBuilder websiteBuilder;
+    private ComputerBuilder computerBuilder;
 
-    public void setWebsite(WebsiteBuilder builder) {
-        this.builder = builder;
+    // Website qurish uchun
+    public void setWebsiteBuilder(WebsiteBuilder websiteBuilder) {
+        this.websiteBuilder = websiteBuilder;
     }
 
-    Website buildWebsite() {
-        builder.createWebsite();
-        builder.buildName();
-        builder.buildCms();
-        builder.buildPrice();
-        Website website = builder.getWebsite();
-        return website;
+    public Website buildWebsite() {
+        websiteBuilder.createWebsite();
+        websiteBuilder.buildName();
+        websiteBuilder.buildCms();
+        websiteBuilder.buildPrice();
+        return websiteBuilder.getWebsite();
     }
 
+    // Computer qurish uchun
+    public void setComputerBuilder(ComputerBuilder computerBuilder) {
+        this.computerBuilder = computerBuilder;
+    }
+
+    public Computer buildComputer() {
+        computerBuilder.createComputer();
+        computerBuilder.buildRam();
+        computerBuilder.buildOs();
+        computerBuilder.buildStorage();
+        computerBuilder.buildPointingDevice();
+        computerBuilder.buildKeyboard();
+        return computerBuilder.getComputer();
+    }
 }
